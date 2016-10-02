@@ -1,0 +1,69 @@
+<html>
+<head>
+  <title>ngGeolocation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.js"></script>
+  <script src="./ngGeolocation.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body ng-app="geolocationDemo">
+<div class="container" ng-controller="AppController">
+ 
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Please  share your Zip Code Or City location</button>
+
+  <!-- Modal -->
+  <div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please  provide your Zip Code Or City location</h4>
+        </div>
+		
+        <div class="modal-body">
+		 <form action='findweather' id="findweather" class="form-horizontal login_form">
+        <div class="form-group">
+		<div class="col-sm-12 input">
+		<input name='zip' id='zip'  type="text" placeholder="Please provide Zip"  class="form-control integer" required="">
+		</div>
+	    </div>
+		<div class="form-group">
+		<div class="col-sm-12 input text-center">
+		<button class="btn btn-md btn-block btn-success" type="button" name="Submit" value="Submit" ng-click="getWeatherByZip();">Submit<i class="glyphicon glyphicon-chevron-right"></i></button>
+		</div>
+		</div>
+		</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+
+ <div id="showerror" class="btn-error"></div>
+  
+  <h1> City name : {{Details.name}}</h1>
+   <br />
+   <h2> Sys :- Country - {{Details.sys.country}} , Sunrise - {{Details.sys.sunrise}} , sunset - {{Details.sys.sunset}}</h2>
+   <br />
+   <h2> weather :- Main - {{Details.weather[0].main}} , description - {{Details.weather[0].description}} </h2>
+  
+   <br />
+   <h2> main :- Tmp - {{Details.main.temp}} , humidity - {{Details.main.humidity}} , pressure  - {{Details.main.pressure }}, temp_min  - {{Details.main.temp_min }}</h2>
+  
+   <br />
+   <h2> wind :- Speed - {{Details.wind.speed}} , degree - {{Details.wind.deg}}</h2>
+   </div>
+</body>
+</html>
